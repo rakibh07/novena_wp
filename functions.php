@@ -137,11 +137,49 @@ add_action( 'widgets_init', 'novena_wp_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
-function novena_wp_scripts() {
-	wp_enqueue_style( 'novena_wp-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'novena_wp-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'novena_wp-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+function novena_wp_scripts() {
+	// Bootstrap CSS
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/bootstrap.min.css', array(), _S_VERSION, 'all' );
+
+	// Iconfont CSS
+	wp_enqueue_style( 'iconfont', get_template_directory_uri() . '/assets/plugins/icofont/icofont.min.css', array(), _S_VERSION, 'all' );
+
+	// Font Awesome
+	wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css', array(), _S_VERSION, 'all');
+
+	// Slick CSS
+	wp_enqueue_style( 'slick', get_template_directory_uri() . '/assets/plugins/slick-carousel/slick/slick.css', array(), _S_VERSION, 'all' );
+
+	// Main CSS
+	wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/style.css', array(), _S_VERSION, 'all' );
+
+	// Slick Theme CSS
+	wp_enqueue_style( 'slick-theme', get_template_directory_uri() . '/assets/plugins/slick-carousel/slick/slick-theme.css', array(), _S_VERSION, 'all' );
+
+	wp_enqueue_style( 'novena-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_style_add_data( 'novena-style', 'rtl', 'replace' );
+
+	// Bootstrap JS
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/plugins/bootstrap/bootstrap.min.js', array('jquery'), _S_VERSION, true );
+
+	// Slick JS
+	wp_enqueue_script( 'slick', get_template_directory_uri() . '/assets/plugins/slick-carousel/slick/slick.min.js', array('jquery'), _S_VERSION, true );
+
+	// Shuffle JS
+	wp_enqueue_script( 'shuffle', get_template_directory_uri() . '/assets/plugins/shuffle/shuffle.min.js', array('jquery'), _S_VERSION, true );
+
+	// Google Map JS
+	wp_enqueue_script( 'google-map', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA', array('jquery'), _S_VERSION, true );
+
+
+	// Gmap JS
+	wp_enqueue_script( 'gmap', get_template_directory_uri() . '/assets/plugins/google-map/gmap.js', array('jquery'), _S_VERSION, true );
+
+	// Script JS
+	wp_enqueue_script( 'script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), _S_VERSION, true );
+
+	wp_enqueue_script( 'novena-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
